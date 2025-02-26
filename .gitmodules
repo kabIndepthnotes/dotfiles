@@ -1,0 +1,24 @@
+[submodule "vim-airline"]
+	path = vim/pack/kab/opt/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "tabular"]
+	path = vim/pack/kab/opt/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim-commentary"]
+	path = vim/pack/kab/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim-sensible"]
+	path = vim/pack/kab/opt/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "traces-vim"]
+	path = vim/pack/kab/opt/traces-vim
+	url = https://github.com/markonm/traces.vim.git
+[submodule "undotree"]
+	path = vim/pack/kab/opt/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "gv"]
+	path = vim/pack/kab/opt/gv
+	url = https://github.com/junegunn/gv.vim.git
+[submodule "vim-fugitive"]
+	path = vim/pack/kab/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
