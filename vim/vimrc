@@ -1,0 +1,40 @@
+" vimrc.vim
+" wincent_load
+" from https://github.com/wincent/wincent/blob/main/aspects/nvim/files/.config/nvim/lua/wincent/plugin/load.lua
+function! WincentLoad(plugin) abort
+	if v:vim_did_enter == 1
+		" Modifies 'runtimepath' _and_ sources files
+		execute "packadd " . a:plugin
+	else
+		"Just modifies 'runtimepath'; Vim will source the files later
+		"as part of |load-plugins| proces
+		execute "packadd! " . a:plugin
+	endif
+endfunction
+
+" plugins
+call WincentLoad("vim-airline")
+call WincentLoad("tabular")
+call WincentLoad("vim-commentary")
+call WincentLoad("vim-sensible") " check this plugin and see if you really need it
+call WincentLoad("traces-vim")
+call WincentLoad("undotree")
+call WincentLoad("gv")
+call WincentLoad("vim-fugitive")
+
+" autocommands
+
+" set_calls
+
+" functions
+function! DefaultTab() abort
+	:Tabularize /\t
+endfunction
+
+function! CsoundTab() abort
+	:Tabularize /\S\+/l0l2
+endfunction
+
+" plug_settings
+
+

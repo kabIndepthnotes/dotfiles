@@ -1,0 +1,145 @@
+/* @code_type vim * */
+@comment_type " %s
+
+@title Vimrc
+
+@s Introduction
+Vim is the best tool for editing text.
+The power of vim is in its speed, ease of use, and it's customisation.
+A vimrc is an enjoyable program that the vim user edits, and is a benchmark for how good a vim user is.
+
+The main philosophy is here.
+- The plugins and code should be as minimal as possible, and I should not be afraid to write code for my vimrc file (even if it takes longer to develop and debug, as I am a coder, I should code).
+- The code should be simple, readable and obvious.
+- I should be able to look at it in 10 years time (2035) and have a clear understanding of it
+- If I show this to 1000 programmer they should understand how it works
+
+This vimrc holds 2 roles.
+One as a game development note taking device, personal public wiki, which will be uploaded.
+Another is as a game development environment.
+Including but not limited to C, csound.
+Things like Ultisnip snippets may be included here.
+
+
+--- vimrc.vim
+@{wincent_load}
+@{plugins}
+@{autocommands}
+@{set_calls}
+@{functions}
+@{plug_settings}
+---
+
+@s Built-in plugin manager by Wincent
+It will be nice to be able to easily send pull requests to plugins, and with the builtin method of having a plugin, this is streamlined.
+It is also part of my principles to hardcode things wherever possible.
+
+Credit to Greg Hurell.
+https://www.youtube.com/watch?v=X2_R3uxDN6g
+
+The commands such as `plugInstall` and `plugUpdate` can be delegated to git.
+See the following text file for a reference of commands.
+
+TODO make into a shell script that does this interactively.
+
+To initialise in you config folder add the folders `pack/USER/opt` and replace USER with your username if you like.
+
+To remove do `git rm $DEST`
+
+--- myvimplugadd.sh
+#!/bin/bash
+#NAME is what git uses internally
+NAME=$1
+#DEST is the name of the folder
+DEST=$1
+URL=$2
+cd ${HOME}/docs/dotfiles/vim/pack/kab/opt/
+git submodule add --name $NAME $URL $DEST
+vim -u NONE -c "helptags $DEST/doc" -c q
+---
+
+--- myvimplugupdate.sh
+#!/bin/bash
+cd ${HOME}/docs/dotfiles/vim/pack/kab/opt/
+git submodule update --remote
+---
+
+--- wincent_load
+" from https://github.com/wincent/wincent/blob/main/aspects/nvim/files/.config/nvim/lua/wincent/plugin/load.lua
+function! WincentLoad(plugin) abort
+	if v:vim_did_enter == 1
+		" Modifies 'runtimepath' _and_ sources files
+		execute "packadd " . a:plugin
+	else
+		"Just modifies 'runtimepath'; Vim will source the files later
+		"as part of |load-plugins| proces
+		execute "packadd! " . a:plugin
+	endif
+endfunction
+---
+
+@s Universal plugins
+
+@s vim-airline
+The nice thing about airline is that it is absolutely clear when I am in insert mode or visual mode.
+--- plugins
+call WincentLoad("vim-airline")
+---
+
+
+@s tabular
+--- plugins+=
+call WincentLoad("tabular")
+---
+
+--- functions
+function! DefaultTab() abort
+	:Tabularize /\t
+endfunction
+
+function! CsoundTab() abort
+	:Tabularize /\S\+/l0l2
+endfunction
+---
+
+
+@s vim-commentary
+--- plugins+=
+call WincentLoad("vim-commentary")
+---
+
+@s vim-sensible
+--- plugins+=
+call WincentLoad("vim-sensible") " check this plugin and see if you really need it
+---
+
+@s traces-vim
+--- plugins+=
+call WincentLoad("traces-vim")
+---
+
+@s undotree
+--- plugins+=
+call WincentLoad("undotree")
+---
+
+
+@s Git plugins
+--- plugins+=
+call WincentLoad("gv")
+call WincentLoad("vim-fugitive")
+---
+
+@s debug
+
+
+---autocommands
+---
+
+---set_calls
+---
+
+
+---plug_settings
+---
+
