@@ -1,4 +1,4 @@
-/* @code_type vim * */
+@code_type vim .vim
 @comment_type " %s
 
 @title Vimrc
@@ -6,30 +6,188 @@
 @s Introduction
 Vim is the best tool for editing text.
 The power of vim is in its speed, ease of use, and it's customisation.
-A vimrc is an enjoyable program that the vim user edits, and is a benchmark for how good a vim user is.
+A vimrc is a program that is enjoyable for the vim user to edit, and a good vimrc $\implies$ a good vim user.
 
-The main philosophy is here.
-- The plugins and code should be as minimal as possible, and I should not be afraid to write code for my vimrc file (even if it takes longer to develop and debug, as I am a coder, I should code).
-- The code should be simple, readable and obvious.
-- I should be able to look at it in 10 years time (2035) and have a clear understanding of it
-- If I show this to 1000 programmer they should understand how it works
 
-This vimrc holds 2 roles.
-One as a game development note taking device, personal public wiki, which will be uploaded.
-Another is as a game development environment.
+The main philosophy for my vimrc is here.
+- The plugins and code should be as minimal as possible
+- I should not be afraid to write code for my vimrc file (even if it takes longer to develop and debug, as I am a coder, I should code).
+- The code should be simple, readable and obvious. I should be able to look at it in 10 years time (2035) and have a clear understanding of it. If I show this to 1000 programmer they should understand how it works
+
+This vimrc holds 2 roles:
+(1) as a game development note taking device, personal public wiki, which will be uploaded.
+(2) is as a game development environment.
 Including but not limited to C, csound.
 Things like Ultisnip snippets may be included here.
 
-
+@s boilerplate
 --- vimrc.vim
 @{wincent_load}
 @{plugins}
 @{autocommands}
 @{set_calls}
+@{maps}
+@{color}
 @{functions}
 @{plug_settings}
 ---
 
+@s vim sensible++
+Here are some commands that I will always want in a vimrc
+
+@s clipboard
+
+I want to save clipboard on exit.
+--- autocommands
+autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipboard on exit
+---
+
+I don't want to `set clipboard=unnamedplus` as I like different registers with different texts.
+--- maps
+vnoremap <C-c> "+y
+nnoremap <C-p> "+p
+---
+
+@s clearer insert mode visuals
+see https://www.reddit.com/r/vim/comments/11f98uv/prevent_vim_from_clearing_clipboard_on_exit/
+
+
+--- autocommands+=
+" highlight the line in insertmode
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set nocursorline
+---
+
+We do have to start thinking about colorschemes next as although highlighting works with `colorscheme torte` our cursorline highlighting is too bright.
+
+In order to change the color we need `syntax on`
+
+--- set_calls
+syntax on
+---
+
+TODO what does gui and cterm mean here?
+--- color
+colorscheme torte
+set termguicolors
+highlight CursorLine guifg=NONE guibg=#333333 gui=NONE cterm=NONE
+---
+
+I also like to have my cursor change between insert and command mode.
+This is by easier in neovim, or possibly even the default.
+--- set_calls+=
+" https://nickjanetakis.com/blog/change-your-vim-cursor-from-a-block-to-line-in-normal-and-insert-mode
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+---
+
+@s quicker edits of vimrc.lit
+
+--- set_calls+=
+let mapleader = ','
+let maplocaleader = "_"
+---
+
+--- maps+=
+" easy edit of vimrc
+nnoremap <leader>ev <Cmd>edit ~/docs/dotfiles/lits/vimrc.lit<cr>
+" cannot be in a function as => a recursive define
+nnoremap <leader>sv <Cmd>make lit-vim -C ~/docs/dotfiles/<bar>source $MYVIMRC<cr>
+noremap <leader>vv <Cmd>view $MYVIMRC<cr>
+---
+
+@s swap `;` with `:`
+
+--- maps+=
+nnoremap : ;
+nnoremap ; :
+
+vnoremap : ;
+vnoremap ; :
+---
+
+@s better window and buffer movement
+--- maps+=
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+---
+
+The exclaimation in `bn!` is used to force the command regardless of buffer save state.
+--- maps+=
+nnoremap <leader>l <Cmd>bn!<cr>
+nnoremap <leader>h <Cmd>bp!<cr>
+---
+
+@s make incsearch disappear on space
+`<space>` is quite a good keyboard shortcut and `nohl` doesn't quite live up to `<space>`.
+
+--- maps+=
+nnoremap <space> <Cmd>nohl<cr>
+---
+
+@s cute tab
+
+the `tab:\|\` gives a `|` sign whenever there is a tab, making vim look more like an IDE that is showing tabs.
+--- set_calls+=
+set list
+set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+---
+
+Give some color to tabs
+--- color+=
+highlight SpecialKey guifg=#888888
+---
+
+@s backup and undo
+--- set_calls+=
+set backup writebackup
+set backupdir=/home/kab/docs/vimtmp//,.
+set directory=/home/kab/docs/vimtmp//,. " for swapfile
+
+set undodir=~/.config/vim/undodir
+set undofile
+set undolevels=10000 " max no of changes possible to undo
+set undoreload=100000 " max no of lines to save for undo on a buffer reload
+---
+
+@s show line numbers
+TODO I want to be able to switch between showing absolute and relative
+--- set_calls+=
+set number
+---
+
+@s line wrap
+---
+set breakindent " preserve horizontal whitespace when wrapping
+set linebreak " wrap words
+set wrap
+---
+
+@s pop up menu
+
+@s folding
+
+@s other vimsensible commands too short for their own module
+--- set_calls+=
+set scrolloff=3
+set mouse=a
+set splitright splitbelow
+---
 @s Built-in plugin manager by Wincent
 It will be nice to be able to easily send pull requests to plugins, and with the builtin method of having a plugin, this is streamlined.
 It is also part of my principles to hardcode things wherever possible.
@@ -86,7 +244,6 @@ The nice thing about airline is that it is absolutely clear when I am in insert 
 call WincentLoad("vim-airline")
 ---
 
-
 @s tabular
 --- plugins+=
 call WincentLoad("tabular")
@@ -118,6 +275,11 @@ call WincentLoad("vim-sensible") " check this plugin and see if you really need 
 call WincentLoad("traces-vim")
 ---
 
+--- set_calls+=
+set hlsearch
+set incsearch
+---
+
 @s undotree
 --- plugins+=
 call WincentLoad("undotree")
@@ -130,16 +292,40 @@ call WincentLoad("gv")
 call WincentLoad("vim-fugitive")
 ---
 
+@s literate plugins
+
+--- plugins+=
+call WincentLoad("literate-vim")
+call WincentLoad("neomake")
+---
+
+--- plug_settings
+---
+
+--- plug_settings+=
+call neomake#configure#automake('w')
+---
+
+@s ultisnips
+--- plugins+=
+call WincentLoad("ultisnips")
+---
+
+--- maps+=
+nnoremap <leader>sn <Cmd>UltisnipsEdit<cr>
+---
+
+--- plug_settings+=
+" from ultisnips github page
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+---
+
+@s faster personal wiki
+- pandoc markdown wiki
 @s debug
 
 
----autocommands
----
 
----set_calls
----
-
-
----plug_settings
----
 

@@ -22,3 +22,12 @@
 [submodule "vim-fugitive"]
 	path = vim/pack/kab/opt/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "literate-vim"]
+	path = vim/pack/kab/opt/literate-vim
+	url = https://github.com/zyedidia/literate.vim.git
+[submodule "neomake"]
+	path = vim/pack/kab/opt/neomake
+	url = https://github.com/neomake/neomake.git
+[submodule "ultisnips"]
+	path = vim/pack/kab/opt/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

@@ -1,4 +1,3 @@
-" myvimplugadd.sh
 #!/bin/bash
 #NAME is what git uses internally
 NAME=$1
