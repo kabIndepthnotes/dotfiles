@@ -71,14 +71,14 @@ Things like Ultisnip snippets may be included here.
 <div class="codeblock">
 <span class="codeblock_name">{<strong>vimrc.vim</strong> <a href="vimrc.html#1:2">2</a>}</span>
 <pre class="prettyprint lang-vim">
-<span class="nocode pln">{wincent_load, <a href="vimrc.html#1:17">17</a>}</span>
-<span class="nocode pln">{plugins, <a href="vimrc.html#1:19">19</a>}</span>
+<span class="nocode pln">{wincent_load, <a href="vimrc.html#1:19">19</a>}</span>
+<span class="nocode pln">{plugins, <a href="vimrc.html#1:21">21</a>}</span>
 <span class="nocode pln">{autocommands, <a href="vimrc.html#1:4">4</a>}</span>
 <span class="nocode pln">{set_calls, <a href="vimrc.html#1:5">5</a>}</span>
 <span class="nocode pln">{maps, <a href="vimrc.html#1:4">4</a>}</span>
 <span class="nocode pln">{color, <a href="vimrc.html#1:5">5</a>}</span>
-<span class="nocode pln">{functions, <a href="vimrc.html#1:20">20</a>}</span>
-<span class="nocode pln">{plug_settings, <a href="vimrc.html#1:26">26</a>}</span>
+<span class="nocode pln">{functions, <a href="vimrc.html#1:18">18</a>}</span>
+<span class="nocode pln">{plug_settings, <a href="vimrc.html#1:28">28</a>}</span>
 </pre>
 
 
@@ -99,7 +99,7 @@ Things like Ultisnip snippets may be included here.
 <pre class="prettyprint lang-vim">
 autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipboard on exit
 </pre>
-<p class="seealso">Added to in section <a href="vimrc.html#1:5">5</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a> and <a href="vimrc.html#1:18">18</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -112,7 +112,7 @@ autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipbo
 vnoremap &lt;C-c&gt; "+y
 nnoremap &lt;C-p&gt; "+p
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -128,7 +128,7 @@ nnoremap &lt;C-p&gt; "+p
 autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set nocursorline
 </pre>
-
+<p class="seealso">Added to in section <a href="vimrc.html#1:18">18</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -142,7 +142,7 @@ autocmd InsertLeave * set nocursorline
 <pre class="prettyprint lang-vim">
 syntax on
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -181,7 +181,7 @@ This is by easier in neovim, or possibly even the default.
 let &amp;t_SI = "\e[6 q"
 let &amp;t_EI = "\e[2 q"
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -194,7 +194,7 @@ let &amp;t_EI = "\e[2 q"
 let mapleader = ','
 let maplocaleader = "_"
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -208,7 +208,7 @@ nnoremap &lt;leader&gt;ev &lt;Cmd&gt;edit ~/docs/dotfiles/lits/vimrc.lit&lt;cr&g
 nnoremap &lt;leader&gt;sv &lt;Cmd&gt;make lit-vim -C ~/docs/dotfiles/&lt;bar&gt;source $MYVIMRC&lt;cr&gt;
 noremap &lt;leader&gt;vv &lt;Cmd&gt;view $MYVIMRC&lt;cr&gt;
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -224,7 +224,7 @@ nnoremap ; :
 vnoremap : ;
 vnoremap ; :
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -239,7 +239,7 @@ nnoremap &lt;C-j&gt; &lt;C-w&gt;j
 nnoremap &lt;C-k&gt; &lt;C-w&gt;k
 nnoremap &lt;C-l&gt; &lt;C-w&gt;l
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -252,7 +252,7 @@ nnoremap &lt;C-l&gt; &lt;C-w&gt;l
 nnoremap &lt;leader&gt;l &lt;Cmd&gt;bn!&lt;cr&gt;
 nnoremap &lt;leader&gt;h &lt;Cmd&gt;bp!&lt;cr&gt;
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:9">9</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -266,7 +266,7 @@ nnoremap &lt;leader&gt;h &lt;Cmd&gt;bp!&lt;cr&gt;
 <pre class="prettyprint lang-vim">
 nnoremap &lt;space&gt; &lt;Cmd&gt;nohl&lt;cr&gt;
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -284,7 +284,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -315,7 +315,7 @@ set undofile
 set undolevels=10000 " max no of changes possible to undo
 set undoreload=100000 " max no of lines to save for undo on a buffer reload
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:12">12</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -329,7 +329,7 @@ set undoreload=100000 " max no of lines to save for undo on a buffer reload
 <pre class="prettyprint lang-vim">
 set number
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:16">16</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -337,7 +337,7 @@ set number
 <a name="1:13"><div class="section"><h4>13. line wrap</h4></a>
 <hr>
 <p>set breakindent " preserve horizontal whitespace when wrapping
-set linebreak " wrap words
+set linebreak " break at words rather than at characters
 set wrap
 </p>
 <hr>
@@ -352,16 +352,106 @@ set wrap
 <div class="codeblock">
 <span class="codeblock_name">{set_calls <a href="vimrc.html#1:5">5</a>} +=</span>
 <pre class="prettyprint lang-vim">
-set scrolloff=3
-set mouse=a
+set scrolloff=3 " keep three lines between the cursor and the edge of the screen
+set mouse=a " add mouse support for all editor modes bar hit-enter and more-prompt
 set splitright splitbelow
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a> and <a href="vimrc.html#1:23">23</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:5">5</a>, <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:10">10</a>, <a href="vimrc.html#1:11">11</a>, <a href="vimrc.html#1:12">12</a> and <a href="vimrc.html#1:25">25</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:17"><div class="section"><h4>17. Built-in plugin manager by Wincent</h4></a>
+<a name="1:17"><div class="section"><h4>17. wiki without vimwiki</h4></a>
+<ul>
+<li>Here are a list of features that I need:
+<ul>
+<li>easy travelling between zetels, i.e. with enter:
+<ul>
+<li>go to old page by default, but have another command to force a new zetel
+</li>
+<li>in visual mode, if I want to make a link, convert all whitespaces in that visual selection into '_'
+</li>
+</ul>
+</li>
+<li>easy creation of zetel words (turning note into note___2025_02_28_1029_01 when I hit enter)
+</li>
+<li>easy searching for notes (fast, and predictable output)
+</li>
+<li>omnicompletion to link to other headers (and possibly other lines of text):
+<ul>
+<li>in pdf form, we should print out line numbers at the start and link to line numbers
+</li>
+</ul>
+</li>
+<li>math latex text conceal
+</li>
+<li>quickly see the output in html which is a commercial website quality:
+<ul>
+<li>run a system pandoc command
+</li>
+</ul>
+</li>
+<li>able to render well in pdf
+</li>
+<li>generate backlinks
+</li>
+<li>syntax highlight tags with easy search of them
+</li>
+<li>text conceal links to hide timestamps
+</li>
+<li>easy replace other instances of a word with its link
+</li>
+</ul>
+</li>
+</ul>
+<p>why do I chose pandoc?
+Pandoc markdown is the closest thing to "standard markdown" that we have.
+It is also a tool that most people should have as it is so versatile.
+It is clearly supported to the largest variety of output documents.
+</p>
+
+</div>
+<a name="1:18"><div class="section"><h4>18. easy travelling between zetels, i.e. with enter</h4></a>
+
+<div class="codeblock">
+<span class="codeblock_name">{autocommands <a href="vimrc.html#1:4">4</a>} +=</span>
+<pre class="prettyprint lang-vim">
+augroup wiki
+	au!
+	autocmd Filetype pandoc nnoremap &lt;buffer&gt; &lt;leader&gt;mz &lt;Cmd&gt;call IndepthWikiEnterNormal()&lt;cr&gt;
+	autocmd Filetype pandoc nnoremap &lt;buffer&gt; gf :e &lt;cfile&gt;&lt;cr&gt;
+augroup END
+</pre>
+<p class="seealso">Added to in section <a href="vimrc.html#1:5">5</a></p>
+
+<p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
+</div>
+
+<div class="codeblock">
+<span class="codeblock_name">{functions <a href="vimrc.html#1:18">18</a>}</span>
+<pre class="prettyprint lang-vim">
+function! IndepthWikiEnterNormal() abort
+<span class="nocode pln">	{check_if_file_is_already_there, <a href="vimrc.html#1:18">18</a>}</span>
+	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . expand("&lt;cword&gt;"))
+	execute "normal! ciw" . zetname . "\&lt;Esc&gt;"
+	normal &lt;c-o&gt;
+endfunction
+</pre>
+<p class="seealso">Added to in section <a href="vimrc.html#1:22">22</a></p>
+
+<p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
+</div>
+
+<div class="codeblock">
+<span class="codeblock_name">{check_if_file_is_already_there <a href="vimrc.html#1:18">18</a>}</span>
+<pre class="prettyprint lang-vim">
+</pre>
+
+
+
+</div>
+</div>
+<a name="1:19"><div class="section"><h4>19. Built-in plugin manager by Wincent</h4></a>
 <p>It will be nice to be able to easily send pull requests to plugins, and with the builtin method of having a plugin, this is streamlined.
 It is also part of my principles to hardcode things wherever possible.
 </p>
@@ -379,7 +469,7 @@ See the following text file for a reference of commands.
 </p>
 
 <div class="codeblock">
-<span class="codeblock_name">{<strong>myvimplugadd.sh</strong> <a href="vimrc.html#1:17">17</a>}</span>
+<span class="codeblock_name">{<strong>myvimplugadd.sh</strong> <a href="vimrc.html#1:19">19</a>}</span>
 <pre class="prettyprint lang-vim">
 #!/bin/bash
 #NAME is what git uses internally
@@ -397,7 +487,7 @@ vim -u NONE -c "helptags $DEST/doc" -c q
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{<strong>myvimplugupdate.sh</strong> <a href="vimrc.html#1:17">17</a>}</span>
+<span class="codeblock_name">{<strong>myvimplugupdate.sh</strong> <a href="vimrc.html#1:19">19</a>}</span>
 <pre class="prettyprint lang-vim">
 #!/bin/bash
 cd ${HOME}/docs/dotfiles/vim/pack/kab/opt/
@@ -409,7 +499,7 @@ git submodule update --remote
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{wincent_load <a href="vimrc.html#1:17">17</a>}</span>
+<span class="codeblock_name">{wincent_load <a href="vimrc.html#1:19">19</a>}</span>
 <pre class="prettyprint lang-vim">
 " from https://github.com/wincent/wincent/blob/main/aspects/nvim/files/.config/nvim/lua/wincent/plugin/load.lua
 function! WincentLoad(plugin) abort
@@ -428,36 +518,36 @@ endfunction
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:18"><div class="section"><h4>18. Universal plugins</h4></a>
+<a name="1:20"><div class="section"><h4>20. Universal plugins</h4></a>
 </div>
-<a name="1:19"><div class="section"><h4>19. vim-airline</h4></a>
+<a name="1:21"><div class="section"><h4>21. vim-airline</h4></a>
 <p>The nice thing about airline is that it is absolutely clear when I am in insert mode or visual mode.
 </p>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>}</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>}</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("vim-airline")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:20"><div class="section"><h4>20. tabular</h4></a>
+<a name="1:22"><div class="section"><h4>22. tabular</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("tabular")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{functions <a href="vimrc.html#1:20">20</a>}</span>
+<span class="codeblock_name">{functions <a href="vimrc.html#1:18">18</a>} +=</span>
 <pre class="prettyprint lang-vim">
 function! DefaultTab() abort
 	:Tabularize /\t
@@ -472,38 +562,38 @@ endfunction
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:21"><div class="section"><h4>21. vim-commentary</h4></a>
+<a name="1:23"><div class="section"><h4>23. vim-commentary</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("vim-commentary")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:22"><div class="section"><h4>22. vim-sensible</h4></a>
+<a name="1:24"><div class="section"><h4>24. vim-sensible</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("vim-sensible") " check this plugin and see if you really need it
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:23"><div class="section"><h4>23. traces-vim</h4></a>
+<a name="1:25"><div class="section"><h4>25. traces-vim</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("traces-vim")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -519,71 +609,71 @@ set incsearch
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:24"><div class="section"><h4>24. undotree</h4></a>
+<a name="1:26"><div class="section"><h4>26. undotree</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("undotree")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:27">27</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:25"><div class="section"><h4>25. Git plugins</h4></a>
+<a name="1:27"><div class="section"><h4>27. Git plugins</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("gv")
 call WincentLoad("vim-fugitive")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:26">26</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:28">28</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:26"><div class="section"><h4>26. literate plugins</h4></a>
+<a name="1:28"><div class="section"><h4>28. literate plugins</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("literate-vim")
 call WincentLoad("neomake")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a> and <a href="vimrc.html#1:27">27</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a> and <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{plug_settings <a href="vimrc.html#1:26">26</a>}</span>
+<span class="codeblock_name">{plug_settings <a href="vimrc.html#1:28">28</a>}</span>
 <pre class="prettyprint lang-vim">
 </pre>
-
+<p class="seealso">Added to in section <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{plug_settings <a href="vimrc.html#1:26">26</a>} +=</span>
+<span class="codeblock_name">{plug_settings <a href="vimrc.html#1:28">28</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call neomake#configure#automake('w')
 </pre>
-
+<p class="seealso">Added to in section <a href="vimrc.html#1:29">29</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
 </div>
-<a name="1:27"><div class="section"><h4>27. ultisnips</h4></a>
+<a name="1:29"><div class="section"><h4>29. ultisnips</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{plugins <a href="vimrc.html#1:19">19</a>} +=</span>
+<span class="codeblock_name">{plugins <a href="vimrc.html#1:21">21</a>} +=</span>
 <pre class="prettyprint lang-vim">
 call WincentLoad("ultisnips")
 </pre>
-<p class="seealso">Added to in sections <a href="vimrc.html#1:20">20</a>, <a href="vimrc.html#1:21">21</a>, <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a> and <a href="vimrc.html#1:26">26</a></p>
+<p class="seealso">Added to in sections <a href="vimrc.html#1:22">22</a>, <a href="vimrc.html#1:23">23</a>, <a href="vimrc.html#1:24">24</a>, <a href="vimrc.html#1:25">25</a>, <a href="vimrc.html#1:26">26</a>, <a href="vimrc.html#1:27">27</a> and <a href="vimrc.html#1:28">28</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
@@ -591,14 +681,34 @@ call WincentLoad("ultisnips")
 <div class="codeblock">
 <span class="codeblock_name">{maps <a href="vimrc.html#1:4">4</a>} +=</span>
 <pre class="prettyprint lang-vim">
-nnoremap &lt;leader&gt;sn &lt;Cmd&gt;UltisnipsEdit!&lt;cr&gt;
+nnoremap &lt;leader&gt;sn &lt;Cmd&gt;UltisnipsEdit&lt;cr&gt;
 </pre>
 <p class="seealso">Added to in sections <a href="vimrc.html#1:6">6</a>, <a href="vimrc.html#1:7">7</a>, <a href="vimrc.html#1:8">8</a>, <a href="vimrc.html#1:8">8</a> and <a href="vimrc.html#1:9">9</a></p>
 
 <p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
+
+<div class="codeblock">
+<span class="codeblock_name">{plug_settings <a href="vimrc.html#1:28">28</a>} +=</span>
+<pre class="prettyprint lang-vim">
+" from ultisnips github page
+let g:UltiSnipsExpandTrigger="&lt;tab&gt;"
+let g:UltiSnipsJumpForwardTrigger="&lt;c-tab&gt;" " gilles castel set this to &lt;tab&gt;
+let g:UltiSnipsJumpBackwardTrigger="&lt;s-tab&gt;"
+</pre>
+<p class="seealso">Added to in section <a href="vimrc.html#1:28">28</a></p>
+
+<p class="seealso">Used in section <a href="vimrc.html#1:2">2</a></p>
 </div>
-<a name="1:28"><div class="section"><h4>28. debug</h4></a>
+</div>
+<a name="1:30"><div class="section"><h4>30. faster personal wiki</h4></a>
+<ul>
+<li>pandoc markdown wiki
+</li>
+</ul>
+
+</div>
+<a name="1:31"><div class="section"><h4>31. debug</h4></a>
 
 </div>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">

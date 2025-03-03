@@ -30,6 +30,11 @@ autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipbo
 " highlight the line in insertmode
 autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set nocursorline
+augroup wiki
+	au!
+	autocmd Filetype pandoc nnoremap <buffer> <leader>mz <Cmd>call IndepthWikiEnterNormal()<cr>
+	autocmd Filetype pandoc nnoremap <buffer> gf :e <cfile><cr>
+augroup END
 
 " set_calls
 syntax on
@@ -62,8 +67,8 @@ set undofile
 set undolevels=10000 " max no of changes possible to undo
 set undoreload=100000 " max no of lines to save for undo on a buffer reload
 set number
-set scrolloff=3
-set mouse=a
+set scrolloff=3 " keep three lines between the cursor and the edge of the screen
+set mouse=a " add mouse support for all editor modes bar hit-enter and more-prompt
 set splitright splitbelow
 set hlsearch
 set incsearch
@@ -88,7 +93,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>l <Cmd>bn!<cr>
 nnoremap <leader>h <Cmd>bp!<cr>
 nnoremap <space> <Cmd>nohl<cr>
-nnoremap <leader>sn <Cmd>UltisnipsEdit!<cr>
+nnoremap <leader>sn <Cmd>UltisnipsEdit<cr>
 
 " color
 colorscheme torte
@@ -97,6 +102,13 @@ highlight CursorLine guifg=NONE guibg=#333333 gui=NONE cterm=NONE
 highlight SpecialKey guifg=#888888
 
 " functions
+function! IndepthWikiEnterNormal() abort
+	" check_if_file_is_already_there
+
+	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . expand("<cword>"))
+	execute "normal! ciw" . zetname . "\<Esc>"
+	normal <c-o>
+endfunction
 function! DefaultTab() abort
 	:Tabularize /\t
 endfunction
@@ -107,5 +119,9 @@ endfunction
 
 " plug_settings
 call neomake#configure#automake('w')
+" from ultisnips github page
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
