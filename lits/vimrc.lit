@@ -8,7 +8,6 @@ Vim is the best tool for editing text.
 The power of vim is in its speed, ease of use, and it's customisation.
 A vimrc is a program that is enjoyable for the vim user to edit, and a good vimrc $\implies$ a good vim user.
 
-
 The main philosophy for my vimrc is here.
 - The plugins and code should be as minimal as possible
 - I should not be afraid to write code for my vimrc file (even if it takes longer to develop and debug, as I am a coder, I should code).
@@ -137,7 +136,7 @@ nnoremap <leader>h <Cmd>bp!<cr>
 nnoremap <space> <Cmd>nohl<cr>
 ---
 
-@s cute tab
+@s cute tab character
 
 the `tab:\|\` gives a `|` sign whenever there is a tab, making vim look more like an IDE that is showing tabs.
 --- set_calls+=
@@ -193,7 +192,8 @@ set splitright splitbelow
 - Here are a list of features that I need:
 	- easy travelling between zetels, i.e. with enter:
 		- go to old page by default, but have another command to force a new zetel
-		- in visual mode, if I want to make a link, convert all whitespaces in that visual selection into '_'
+		- in visual mode, if I want to make a link, convert all whitespaces in that visual selection into '_', then do usual link making.
+		- when making a new zetel, search for the exact word in the wiki in order to suggest linking.
 	- easy creation of zetel words (turning note into note___2025_02_28_1029_01 when I hit enter)
 	- easy searching for notes (fast, and predictable output)
 	- omnicompletion to link to other headers (and possibly other lines of text):
@@ -206,6 +206,7 @@ set splitright splitbelow
 	- syntax highlight tags with easy search of them
 	- text conceal links to hide timestamps
 	- easy replace other instances of a word with its link
+	- generate backlinks
 
 
 why do I chose pandoc?
@@ -225,8 +226,9 @@ augroup END
 
 --- functions
 function! IndepthWikiEnterNormal() abort
+	let word = expand("<cword>")
 	@{check_if_file_is_already_there}
-	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . expand("<cword>"))
+	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . word)
 	execute "normal! ciw" . zetname . "\<Esc>"
 	normal <c-o>
 endfunction
@@ -234,6 +236,16 @@ endfunction
 
 
 --- check_if_file_is_already_there
+" let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
+" let found_words_choices = system('/home/kab/docs/my_scripts/mymakevimdialog ' . found_words)
+" let word_choice_input = confirm(found_words, "type number or leave blank:")
+" 
+" let no_of_possible_choices = system('echo ' . found_word_choices . ' | wc -l')
+" 
+" if (word_choice_input <= no_of_possible_choices) && (word_choice_input != 0)
+" 	" TODO choice the right file and zetelify and write here
+" endif
+
 ---
 
 @s Built-in plugin manager by Wincent
@@ -360,7 +372,7 @@ call WincentLoad("ultisnips")
 ---
 
 --- maps+=
-nnoremap <leader>sn <Cmd>UltisnipsEdit<cr>
+nnoremap <leader>sn <Cmd>UltiSnipsEdit<cr>
 ---
 
 --- plug_settings+=
@@ -368,6 +380,7 @@ nnoremap <leader>sn <Cmd>UltisnipsEdit<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/kab/docs/dotfiles/vim/UltiSnips/"
 ---
 
 @s faster personal wiki

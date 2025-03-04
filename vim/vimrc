@@ -93,7 +93,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>l <Cmd>bn!<cr>
 nnoremap <leader>h <Cmd>bp!<cr>
 nnoremap <space> <Cmd>nohl<cr>
-nnoremap <leader>sn <Cmd>UltisnipsEdit<cr>
+nnoremap <leader>sn <Cmd>UltiSnipsEdit<cr>
 
 " color
 colorscheme torte
@@ -103,9 +103,20 @@ highlight SpecialKey guifg=#888888
 
 " functions
 function! IndepthWikiEnterNormal() abort
+	let word = expand("<cword>")
 	" check_if_file_is_already_there
+	" let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
+	" let found_words_choices = system('/home/kab/docs/my_scripts/mymakevimdialog ' . found_words)
+	" let word_choice_input = confirm(found_words, "type number or leave blank:")
+	" 
+	" let no_of_possible_choices = system('echo ' . found_word_choices . ' | wc -l')
+	" 
+	" if (word_choice_input <= no_of_possible_choices) && (word_choice_input != 0)
+	" 	" TODO choice the right file and zetelify and write here
+	" endif
+	
 
-	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . expand("<cword>"))
+	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . word)
 	execute "normal! ciw" . zetname . "\<Esc>"
 	normal <c-o>
 endfunction
@@ -123,5 +134,6 @@ call neomake#configure#automake('w')
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/kab/docs/dotfiles/vim/UltiSnips/"
 
 
