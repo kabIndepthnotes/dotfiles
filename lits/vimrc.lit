@@ -23,11 +23,11 @@ Things like Ultisnip snippets may be included here.
 --- vimrc.vim
 @{wincent_load}
 @{plugins}
-@{autocommands}
+@{functions}
 @{set_calls}
 @{maps}
 @{color}
-@{functions}
+@{autocommands}
 @{plug_settings}
 ---
 
@@ -50,14 +50,13 @@ nnoremap <C-p> "+p
 @s clearer insert mode visuals
 see https://www.reddit.com/r/vim/comments/11f98uv/prevent_vim_from_clearing_clipboard_on_exit/
 
-
---- autocommands+=
+--- autocommands +=
 " highlight the line in insertmode
 autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set nocursorline
 ---
 
-We do have to start thinking about colorschemes next as although highlighting works with `colorscheme torte` our cursorline highlighting is too bright.
+I do have to start thinking about colorschemes next as although highlighting works with `colorscheme torte` our cursorline highlighting is too bright.
 
 In order to change the color we need `syntax on`
 
@@ -74,7 +73,7 @@ highlight CursorLine guifg=NONE guibg=#333333 gui=NONE cterm=NONE
 
 I also like to have my cursor change between insert and command mode.
 This is by easier in neovim, or possibly even the default.
---- set_calls+=
+--- set_calls +=
 " https://nickjanetakis.com/blog/change-your-vim-cursor-from-a-block-to-line-in-normal-and-insert-mode
 " Use a line cursor within insert mode and a block cursor everywhere else.
 "
@@ -92,12 +91,12 @@ let &t_EI = "\e[2 q"
 
 @s quicker edits of vimrc.lit
 
---- set_calls+=
+--- set_calls +=
 let mapleader = ','
 let maplocaleader = "_"
 ---
 
---- maps+=
+--- maps +=
 " easy edit of vimrc
 nnoremap <leader>ev <Cmd>edit ~/docs/dotfiles/lits/vimrc.lit<cr>
 " cannot be in a function as => a recursive define
@@ -107,7 +106,7 @@ noremap <leader>vv <Cmd>view $MYVIMRC<cr>
 
 @s swap `;` with `:`
 
---- maps+=
+--- maps +=
 nnoremap : ;
 nnoremap ; :
 
@@ -116,7 +115,7 @@ vnoremap ; :
 ---
 
 @s better window and buffer movement
---- maps+=
+--- maps +=
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -124,7 +123,7 @@ nnoremap <C-l> <C-w>l
 ---
 
 The exclaimation in `bn!` is used to force the command regardless of buffer save state.
---- maps+=
+--- maps +=
 nnoremap <leader>l <Cmd>bn!<cr>
 nnoremap <leader>h <Cmd>bp!<cr>
 ---
@@ -132,14 +131,14 @@ nnoremap <leader>h <Cmd>bp!<cr>
 @s make incsearch disappear on space
 `<space>` is quite a good keyboard shortcut and `nohl` doesn't quite live up to `<space>`.
 
---- maps+=
+--- maps +=
 nnoremap <space> <Cmd>nohl<cr>
 ---
 
 @s cute tab character
 
 the `tab:\|\` gives a `|` sign whenever there is a tab, making vim look more like an IDE that is showing tabs.
---- set_calls+=
+--- set_calls +=
 set list
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 set tabstop=4
@@ -148,12 +147,12 @@ set shiftwidth=4
 ---
 
 Give some color to tabs
---- color+=
+--- color +=
 highlight SpecialKey guifg=#888888
 ---
 
 @s backup and undo
---- set_calls+=
+--- set_calls +=
 set backup writebackup
 set backupdir=/home/kab/docs/vimtmp//,.
 set directory=/home/kab/docs/vimtmp//,. " for swapfile
@@ -166,7 +165,7 @@ set undoreload=100000 " max no of lines to save for undo on a buffer reload
 
 @s show line numbers
 TODO I want to be able to switch between showing absolute and relative
---- set_calls+=
+--- set_calls +=
 set number
 ---
 
@@ -182,10 +181,26 @@ set wrap
 @s folding
 
 @s other vimsensible commands too short for their own module
---- set_calls+=
+--- set_calls +=
 set scrolloff=3 " keep three lines between the cursor and the edge of the screen
 set mouse=a " add mouse support for all editor modes bar hit-enter and more-prompt
 set splitright splitbelow
+---
+
+@s ctags
+--- set_calls +=
+set tags=/home/kab/applications/raylib/src/tags
+---
+
+@s pretty line print
+--- functions
+function! Pretty_line_print() abort
+	s/\([\.!?!]\) \+/\1\r/g
+endfunction
+---
+
+--- maps +=
+nnoremap <leader>p :call Pretty_line_print()<cr>
 ---
 
 @s wiki without vimwiki
@@ -205,9 +220,11 @@ set splitright splitbelow
 	- generate backlinks
 	- syntax highlight tags with easy search of them
 	- text conceal links to hide timestamps
+	- text conceal math
 	- easy replace other instances of a word with its link
-	- generate backlinks
-
+	- generate backlinks (when making a new link generate a backlink)
+	- using "=" to make a title, though we want to use another key as we want folding.
+	- on close append visits comment.
 
 why do I chose pandoc?
 Pandoc markdown is the closest thing to "standard markdown" that we have.
@@ -216,24 +233,45 @@ It is clearly supported to the largest variety of output documents.
 
 @s easy travelling between zetels, i.e. with enter
 
---- autocommands+=
+--- autocommands +=
 augroup wiki
 	au!
-	autocmd Filetype pandoc nnoremap <buffer> <leader>mz <Cmd>call IndepthWikiEnterNormal()<cr>
-	autocmd Filetype pandoc nnoremap <buffer> gf :e <cfile><cr>
+	@{wiki_autocommands}
 augroup END
 ---
 
---- functions
+--- wiki_autocommands
+	autocmd Filetype pandoc nnoremap <buffer> <enter> <Cmd>call IndepthWikiEnterNormal()<cr>
+	autocmd Filetype pandoc vnoremap <buffer> <enter> <Cmd>call IndepthWikiEnterVisual()<cr>
+	autocmd Filetype pandoc set conceallevel=1
+	autocmd Filetype pandoc nnoremap <buffer> gf :e <cfile><cr>
+	autocmd FileType pandoc nnoremap <buffer> <c-f> :!my_linkify $(fzf) \| xsel -b<cr>
+---
+
+--- functions +=
 function! IndepthWikiEnterNormal() abort
 	let word = expand("<cword>")
 	@{check_if_file_is_already_there}
 	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . word)
 	execute "normal! ciw" . zetname . "\<Esc>"
-	normal <c-o>
+	normal h
+	write!
 endfunction
 ---
 
+In visual mode, I want to replace spaces with underscores and then call `IndepthWikiEnterNormal()`.
+
+--- functions +=
+function! IndepthWikiEnterVisual() abort
+	'<,'>s/\%V /_/g
+endfunction
+---
+
+@s math highlighting and snippets
+
+--- syntax/mymathtex.vim
+
+---
 
 --- check_if_file_is_already_there
 " let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
@@ -305,11 +343,11 @@ call WincentLoad("vim-airline")
 ---
 
 @s tabular
---- plugins+=
+--- plugins +=
 call WincentLoad("tabular")
 ---
 
---- functions+=
+--- functions +=
 function! DefaultTab() abort
 	:Tabularize /\t
 endfunction
@@ -319,42 +357,79 @@ function! CsoundTab() abort
 endfunction
 ---
 
+--- maps +=
+nnoremap <leader>a <Cmd>call DefaultTab()<cr>
+---
 
 @s vim-commentary
---- plugins+=
+--- plugins +=
 call WincentLoad("vim-commentary")
 ---
 
+--- wiki_autocommands +=
+autocmd FileType pandoc setlocal commentstring=<!--\ %s\ -->
+---
+
 @s vim-sensible
---- plugins+=
+--- plugins +=
 call WincentLoad("vim-sensible") " check this plugin and see if you really need it
 ---
 
 @s traces-vim
---- plugins+=
+--- plugins +=
 call WincentLoad("traces-vim")
 ---
 
---- set_calls+=
+--- set_calls +=
 set hlsearch
 set incsearch
 ---
 
 @s undotree
---- plugins+=
+--- plugins +=
 call WincentLoad("undotree")
 ---
 
+--- maps +=
+nnoremap <leader>u <cmd>UndotreeToggle<cr>
+---
+
+/* --- mistake += */
+
+/* --- */
+
+@s text objects with targets.vim
+--- plugins +=
+call WincentLoad("targets-vim")
+---
+
+@s understanding targets creation with line-targets.vim
+--- plugins +=
+call WincentLoad("line-targets-vim")
+---
+
+@s text-objects
+
+@s c text-objects
+I should look at https://www.youtube.com/watch?v=JnD9Uro_oqc for inspiration on how far we can take text objects.
+
+@s c comments
+I want to be able to delete within a comment, delete around a comment as well as the nice functions of targets.vim, such as deleting the next comment or the last comment
+git@github.com:kabIndepthnotes/c-targets-vim.git
 
 @s Git plugins
---- plugins+=
+--- plugins +=
 call WincentLoad("gv")
 call WincentLoad("vim-fugitive")
 ---
 
+--- set_calls +=
+nnoremap <leader>gs <cmd>Git<cr>
+---
+
 @s literate plugins
 
---- plugins+=
+--- plugins +=
 call WincentLoad("literate-vim")
 call WincentLoad("neomake")
 ---
@@ -362,31 +437,38 @@ call WincentLoad("neomake")
 --- plug_settings
 ---
 
---- plug_settings+=
+--- plug_settings +=
 call neomake#configure#automake('w')
 ---
 
 @s ultisnips
---- plugins+=
+--- plugins +=
 call WincentLoad("ultisnips")
 ---
 
---- maps+=
+--- maps +=
 nnoremap <leader>sn <Cmd>UltiSnipsEdit<cr>
 ---
 
---- plug_settings+=
+--- plug_settings +=
 " from ultisnips github page
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/kab/docs/dotfiles/vim/UltiSnips/"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>" " gilles castel set this to <tab>
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsExpandTrigger="<Right>"
+" let g:UltiSnipsJumpForwardTrigger="<Right>" " gilles castel set this to <tab>
+" let g:UltiSnipsJumpBackwardTrigger="<Left>"
 ---
+
+see ultisnips.lit for all snippets
 
 @s faster personal wiki
 - pandoc markdown wiki
+
+@s Color Equations or Colorized Equations
+This will probably be best in a seperate plugin
+
+@s text objects
+
 @s debug
-
-
-
 

@@ -31,3 +31,9 @@
 [submodule "ultisnips"]
 	path = vim/pack/kab/opt/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "targets-vim"]
+	path = vim/pack/kab/opt/targets-vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule "line-targets-vim"]
+	path = vim/pack/kab/opt/line-targets-vim
+	url = https://github.com/wellle/line-targets.vim.git
