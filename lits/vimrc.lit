@@ -425,6 +425,7 @@ call WincentLoad("vim-fugitive")
 
 --- set_calls +=
 nnoremap <leader>gs <cmd>Git<cr>
+nnoremap <leader>gv <cmd>GV<cr>
 ---
 
 @s literate plugins
@@ -469,6 +470,24 @@ see ultisnips.lit for all snippets
 This will probably be best in a seperate plugin
 
 @s text objects
+
+@s AI pair programmer
+- use gemini as it is based on google (regulated and good for code review, has a good free tier)
+
+--- plugins +=
+call WincentLoad("denops-vim")
+call WincentLoad("futago-vim")
+---
+
+--- plug_settings +=
+" futago
+let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
+---
+
+--- maps +=
+nnoremap <leader>bs <cmd>FutagoStartChat<cr>
+nnoremap <leader>gc <cmd>FutagoGitCommit<cr>
+---
 
 @s debug
 

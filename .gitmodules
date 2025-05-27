@@ -37,3 +37,9 @@
 [submodule "line-targets-vim"]
 	path = vim/pack/kab/opt/line-targets-vim
 	url = https://github.com/wellle/line-targets.vim.git
+[submodule "denops-vim"]
+	path = vim/pack/kab/opt/denops-vim
+	url = https://github.com/vim-denops/denops.vim.git
+[submodule "futago-vim"]
+	path = vim/pack/kab/opt/futago-vim
+	url = https://github.com/yukimemi/futago.vim.git
