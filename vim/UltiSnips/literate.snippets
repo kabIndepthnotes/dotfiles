@@ -1,0 +1,44 @@
+# TODO only allow C snips to work when appropriate
+priority -50
+extends snippets
+extends c
+extends mymathtex
+extends pandoc
+priority 1
+
+snippet pream
+@code_type c .c
+@comment_type /* %s */
+@compiler gcc main.c
+
+@title ${1:An Indepthnotes Project}
+endsnippet
+
+
+# TODO try to make this automatically guess if we need a new define := or add to define +=
+snippet mf "make code fence" A
+--- $1
+${2:${VISUAL}}
+---
+$0
+endsnippet
+
+snippet func "make code function fence"
+--- function_prototypes +=
+$1 $2($4);
+---
+
+--- function_definitions +=
+$1
+$2($4)
+{
+	$0
+}
+---
+
+endsnippet
+
+snippet mo "module"
+@{$1}
+endsnippet
+

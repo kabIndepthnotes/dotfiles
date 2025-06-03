@@ -1,0 +1,108 @@
+# c.snippets
+snippet pream "main preamble" w
+/* Name: `!p snip.rv = fn` */
+/* Purpose: $2 */
+/* Author: kab@indepthnotes.com */
+/* Donate! indepthnotes.com/donate */
+
+int
+main(void)
+{
+	
+	return 0;
+}
+endsnippet
+
+snippet // "comment" Ai
+/* $0 */
+endsnippet
+
+snippet pr "printf"
+printf("$1${2:\n}", $0);
+endsnippet
+
+snippet sc "scanf"
+scanf("%${1:f}", &$0);
+endsnippet
+
+# kept commented because I use the literate snip instead
+# snippet fn "function" b
+# ${1:int}
+# $2($4)
+# {
+# 	$0
+# }
+# endsnippet
+
+snippet if
+if ($1) {
+	$0
+}
+endsnippet
+
+snippet else
+else {
+	$0
+}
+endsnippet
+
+
+snippet elif "else if"
+else if ($1) {
+	$0
+}
+endsnippet
+
+snippet tern "ternary operator"
+($1)? $2 : $3
+endsnippet
+
+snippet sw "switch"
+switch ($1) {
+	$0
+}
+endsnippet
+
+snippet ca "switch case"
+case $1:
+	$2
+	break;
+$0
+endsnippet
+
+snippet fa "fall through"
+/* FALLTHROUGH */
+endsnippet
+
+snippet wh "while"
+while ($1) {
+	$2
+}
+$0
+endsnippet
+
+
+snippet do "do while loop"
+do {
+	$1
+} while ($2);
+$0
+endsnippet
+
+snippet fo "for loop"
+for ($1; $2; $3) {
+	$4
+}
+endsnippet
+
+snippet ty "typedef struct"
+typedef struct $1 {
+	$2
+} $1;
+endsnippet
+
+snippet cm "comment"
+/* $1 */
+endsnippet
+
+

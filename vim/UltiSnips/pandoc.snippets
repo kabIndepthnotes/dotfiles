@@ -1,0 +1,27 @@
+# pandoc.snippets
+priority -50
+extends mymathtex
+priority 1
+
+snippet pream "Preamble"
+# `!v system("/home/kab/docs/my_scripts/mydezetelify " . expand("%:t"))`
+
+# standard
+[wood](wood___20250527_1447_59.pd)
+
+# related
+$1
+endsnippet
+
+snippet mc "inline code" A
+\`${1:${VISUAL}}\`
+endsnippet
+
+snippet cm "display code" Ab
+~~~{.c .numberLines}
+${1:${VISUAL}}
+~~~
+endsnippet
+
+
+
