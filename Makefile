@@ -1,8 +1,12 @@
 default:
 	echo "hello world"
 
-symlink-vim: lit-vim
+symlink-vim:
 	ln -s /home/kab/docs/dotfiles/vim /home/kab/.config/vim
+
+symlink-scim:
+	# mkdir /home/kab/docs/dotfiles/sc-im
+	ln -s /home/kab/docs/dotfiles/scimrc /home/kab/.config/sci-im/scimrc
 
 symlink-qute-configpy:
 	ln -s ~/docs/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
@@ -10,7 +14,7 @@ symlink-qute-configpy:
 symlink-bashrc:
 	ln -s /home/kab/docs/dotfiles/dot-bashrc /home/kab/.bashrc
 
-lit-vim: lit-ultisnip
+lit-vim:
 	lit --tangle lits/vimrc.lit --out-dir vim/
 	lit --weave lits/vimrc.lit  --out-dir docs/
 	# lit --weave lits/vimrc.lit --md-compiler --out-dir docs/
