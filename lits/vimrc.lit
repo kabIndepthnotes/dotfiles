@@ -89,6 +89,12 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 ---
 
+--- autocommands +=
+" remove annoying bar cursor when running vim
+autocmd VimEnter * normal :
+---
+
+
 @s quicker edits of vimrc.lit
 
 --- set_calls +=
@@ -252,7 +258,7 @@ augroup END
 function! IndepthWikiEnterNormal() abort
 	let word = expand("<cword>")
 	@{check_if_file_is_already_there}
-	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . word)
+	let zetname = system("/home/kab/docs/my_scripts/my_zetelify " . word)
 	execute "normal! ciw" . zetname . "\<Esc>"
 	normal h
 	write!

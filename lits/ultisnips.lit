@@ -1039,7 +1039,7 @@ extends mymathtex
 priority 1
 
 snippet pream "Preamble"
-# `!v system("/home/kab/docs/my_scripts/mydezetelify " . expand("%:t"))`
+# `!v system("/home/kab/docs/my_scripts/my_dezetelify " . expand("%:t"))`
 
 # standard
 [wood](wood___20250527_1447_59.pd)
@@ -1054,6 +1054,12 @@ endsnippet
 
 snippet cm "display code" Ab
 ~~~{.c .numberLines}
+${1:${VISUAL}}
+~~~
+endsnippet
+
+snippet trans "transclusion include file" b
+~~~{.include}
 ${1:${VISUAL}}
 ~~~
 endsnippet
