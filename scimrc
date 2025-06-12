@@ -36,5 +36,15 @@ color "type=FILENM fg=YELLOW bg=BLACK bold=0"
 color "type=STRG fg=CYAN bg=BLACK bold=0 italic=0"
 color "type=DATEF fg=YELLOW bg=BLACK"
 
+set underline_grid
+
 nnoremap ":" ";"
 nnoremap ";" ":"
+
+nnoremap "ZQ" ":q!<cr>"
+
+vnoremap ":" ";"
+vnoremap ";" ":"
+
+# dates
+nnoremap ",n" ":format \"d%a %d %b %Y\"<cr>"
