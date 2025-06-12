@@ -8,6 +8,8 @@ setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
+setopt HIST_IGNORE_SPACE
+
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -90,6 +92,7 @@ export EDITOR=vim
 
 # I want to be able to run these commands anywhere
 PATH="$PATH:/home/kab/docs/my_scripts/"
+# PATH="$PATH:/usr/bin/python3:/usr/bin/pip3"
 PATH="$PATH:/home/kab/applications/lilypond-2.24.4/bin/"
 PATH="$PATH:/home/kab/applications/emsdk:/home/kab/applications/emsdk/node/20.18.0_64bit/bin:/home/kab/applications/emsdk/upstream/emscripten"
 
