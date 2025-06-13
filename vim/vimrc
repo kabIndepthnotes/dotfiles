@@ -19,22 +19,49 @@ call WincentLoad("vim-commentary")
 call WincentLoad("vim-sensible") " check this plugin and see if you really need it
 call WincentLoad("traces-vim")
 call WincentLoad("undotree")
+call WincentLoad("targets-vim")
+call WincentLoad("line-targets-vim")
 call WincentLoad("gv")
 call WincentLoad("vim-fugitive")
 call WincentLoad("literate-vim")
 call WincentLoad("neomake")
 call WincentLoad("ultisnips")
+call WincentLoad("denops-vim")
+call WincentLoad("futago-vim")
 
-" autocommands
-autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipboard on exit
-" highlight the line in insertmode
-autocmd InsertEnter * set cursorline
-autocmd InsertLeave * set nocursorline
-augroup wiki
-	au!
-	autocmd Filetype pandoc nnoremap <buffer> <leader>mz <Cmd>call IndepthWikiEnterNormal()<cr>
-	autocmd Filetype pandoc nnoremap <buffer> gf :e <cfile><cr>
-augroup END
+" functions
+function! Pretty_line_print() abort
+	s/\([\.!?!]\) \+/\1\r/g
+endfunction
+function! IndepthWikiEnterNormal() abort
+	let word = expand("<cword>")
+	" check_if_file_is_already_there
+	" let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
+	" let found_words_choices = system('/home/kab/docs/my_scripts/mymakevimdialog ' . found_words)
+	" let word_choice_input = confirm(found_words, "type number or leave blank:")
+	" 
+	" let no_of_possible_choices = system('echo ' . found_word_choices . ' | wc -l')
+	" 
+	" if (word_choice_input <= no_of_possible_choices) && (word_choice_input != 0)
+	" 	" TODO choice the right file and zetelify and write here
+	" endif
+	
+
+	let zetname = system("/home/kab/docs/my_scripts/my_zetelify " . word)
+	execute "normal! ciw" . zetname . "\<Esc>"
+	normal h
+	write!
+endfunction
+function! IndepthWikiEnterVisual() abort
+	'<,'>s/\%V /_/g
+endfunction
+function! DefaultTab() abort
+	:Tabularize /\t
+endfunction
+
+function! CsoundTab() abort
+	:Tabularize /\S\+/l0l2
+endfunction
 
 " set_calls
 syntax on
@@ -70,8 +97,12 @@ set number
 set scrolloff=3 " keep three lines between the cursor and the edge of the screen
 set mouse=a " add mouse support for all editor modes bar hit-enter and more-prompt
 set splitright splitbelow
+set tags=/home/kab/applications/raylib/src/tags
 set hlsearch
 set incsearch
+nnoremap <leader>gs <cmd>Git<cr>
+nnoremap <leader>gc <cmd>Git commit<cr>
+nnoremap <leader>gv <cmd>GV<cr>
 
 " maps
 vnoremap <C-c> "+y
@@ -93,47 +124,50 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>l <Cmd>bn!<cr>
 nnoremap <leader>h <Cmd>bp!<cr>
 nnoremap <space> <Cmd>nohl<cr>
+nnoremap <leader>p :call Pretty_line_print()<cr>
+nnoremap <leader>a <Cmd>call DefaultTab()<cr>
+nnoremap <leader>u <cmd>UndotreeToggle<cr>
 nnoremap <leader>sn <Cmd>UltiSnipsEdit<cr>
+nnoremap <leader>bs <cmd>FutagoStartChat<cr>
+nnoremap <leader>bh <cmd>FutagoHistory<cr>
+nnoremap <leader>bc <cmd>FutagoGitCommit<cr>
 
 " color
 colorscheme torte
 set termguicolors
+highlight Conceal guibg=#000000 " make conceal color invisible.
 highlight CursorLine guifg=NONE guibg=#333333 gui=NONE cterm=NONE
 highlight SpecialKey guifg=#888888
 
-" functions
-function! IndepthWikiEnterNormal() abort
-	let word = expand("<cword>")
-	" check_if_file_is_already_there
-	" let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
-	" let found_words_choices = system('/home/kab/docs/my_scripts/mymakevimdialog ' . found_words)
-	" let word_choice_input = confirm(found_words, "type number or leave blank:")
-	" 
-	" let no_of_possible_choices = system('echo ' . found_word_choices . ' | wc -l')
-	" 
-	" if (word_choice_input <= no_of_possible_choices) && (word_choice_input != 0)
-	" 	" TODO choice the right file and zetelify and write here
-	" endif
-	
+" autocommands
+autocmd VimLeave,VimSuspend * call system("xsel -ib", getreg('+')) " save clipboard on exit
+" highlight the line in insertmode
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set nocursorline
+" remove annoying bar cursor when running vim
+autocmd VimEnter * normal :
+augroup wiki
+	au!
+	" wiki_autocommands
+		autocmd Filetype pandoc nnoremap <buffer> <enter> <Cmd>call IndepthWikiEnterNormal()<cr>
+		autocmd Filetype pandoc vnoremap <buffer> <enter> <Cmd>call IndepthWikiEnterVisual()<cr>
+		autocmd Filetype pandoc set conceallevel=1
+		autocmd Filetype pandoc nnoremap <buffer> gf :e <cfile><cr>
+		autocmd FileType pandoc nnoremap <buffer> <c-f> :!my_linkify $(fzf) \| xsel -b<cr>
+	autocmd FileType pandoc setlocal commentstring=<!--\ %s\ -->
 
-	let zetname = system("/home/kab/docs/my_scripts/myzetelify " . word)
-	execute "normal! ciw" . zetname . "\<Esc>"
-	normal <c-o>
-endfunction
-function! DefaultTab() abort
-	:Tabularize /\t
-endfunction
-
-function! CsoundTab() abort
-	:Tabularize /\S\+/l0l2
-endfunction
+augroup END
 
 " plug_settings
 call neomake#configure#automake('w')
 " from ultisnips github page
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-tab>" " gilles castel set this to <tab>
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/kab/docs/dotfiles/vim/UltiSnips/"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>" " gilles castel set this to <tab>
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsExpandTrigger="<Right>"
+" let g:UltiSnipsJumpForwardTrigger="<Right>" " gilles castel set this to <tab>
+" let g:UltiSnipsJumpBackwardTrigger="<Left>"
+" futago
+let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
 
 

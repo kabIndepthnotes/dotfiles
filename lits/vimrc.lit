@@ -68,6 +68,7 @@ TODO what does gui and cterm mean here?
 --- color
 colorscheme torte
 set termguicolors
+highlight Conceal guibg=#000000 " make conceal color invisible.
 highlight CursorLine guifg=NONE guibg=#333333 gui=NONE cterm=NONE
 ---
 
