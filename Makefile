@@ -4,6 +4,9 @@ default:
 symlink-vim:
 	ln -s /home/kab/docs/dotfiles/vim /home/kab/.config/vim
 
+symlink-lf:
+	ln -s /home/kab/docs/dotfiles/lfrc /home/kab/.config/lf/lfrc
+
 symlink-scim:
 	# mkdir /home/kab/docs/dotfiles/sc-im
 	ln -s /home/kab/docs/dotfiles/scimrc /home/kab/.config/sci-im/scimrc

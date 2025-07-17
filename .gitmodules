@@ -43,3 +43,9 @@
 [submodule "futago-vim"]
 	path = vim/pack/kab/opt/futago-vim
 	url = https://github.com/yukimemi/futago.vim.git
+[submodule "vim-lsp"]
+	path = vim/pack/kab/opt/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule "lean-vim"]
+	path = vim/pack/kab/opt/lean-vim
+	url = https://github.com/leanprover/lean.vim.git
