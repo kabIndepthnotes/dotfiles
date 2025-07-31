@@ -1,17 +1,36 @@
+# edit this file directly as it is hard to make literate snippets in literate programming
 # TODO only allow C snips to work when appropriate
 priority -50
 extends snippets
-extends c
+# extends c
 extends mymathtex
 extends pandoc
+extends html
 priority 1
 
-snippet pream
+priority 1
+snippet pr
 @code_type c .c
 @comment_type /* %s */
 @compiler gcc main.c
 
-@title ${1:An Indepthnotes Project}
+@s ${1:C programming a mordern approach exercises}
+
+--- `!p snip.rv = snip.basename`.c
+@{include_directives}
+@{define_directives}
+@{type_definitions}
+@{external_variables}
+@{function_prototypes}
+int
+main(void)
+{
+	@{initialise_objects}
+	return 0;
+}
+
+@{function_definitions}
+---
 endsnippet
 
 
@@ -23,7 +42,7 @@ ${2:${VISUAL}}
 $0
 endsnippet
 
-snippet func "make code function fence"
+snippet fn "make code function fence"
 --- function_prototypes +=
 $1 $2($4);
 ---

@@ -5,6 +5,7 @@
 
 @s all snippets
 --- all.snippets
+# this file is overwritten in the lit compile process
 snippet date
 `date +"%a %d %b %Y"`
 endsnippet
@@ -16,6 +17,7 @@ This may sound confusing, but it is just snippets for a .snippets file.
 This is just to help write snippets quicker.
 
 --- snippets.snippets
+# this file is overwritten in the lit compile process
 snippet snip "the snippet snippet"
 snippet $1
 $2
@@ -26,7 +28,8 @@ endsnippet
 
 @s c snippets
 --- c.snippets
-snippet pream "main preamble" w
+# this file is overwritten in the lit compile process
+snippet pre "main preamble" w
 /* Name: `!p snip.rv = fn` */
 /* Purpose: $2 */
 /* Author: kab@indepthnotes.com */
@@ -123,7 +126,7 @@ for ($1; $2; $3) {
 endsnippet
 
 snippet ty "typedef struct"
-typedef struct $1 {
+typedef struct {
 	$2
 } $1;
 endsnippet
@@ -142,6 +145,7 @@ please see vim/UltiSnips/literate.snippets directly as it is quite annoying sett
 
 @s setting the proper context
 --- mymathtex.snippets --- noWeave
+# this file is overwritten in the lit compile process
 # from https://vi.stackexchange.com/questions/18490/ultisnips-context-and-tex
 global !p
 texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
@@ -1034,18 +1038,19 @@ endsnippet
 @s pandoc snippets
 
 --- pandoc.snippets
+# this file is overwritten in the lit compile process
 priority -50
 extends mymathtex
 priority 1
 
-snippet pream "Preamble"
+snippet pr "Preamble"
 # `!v system("/home/kab/docs/my_scripts/my_dezetelify " . expand("%:t"))`
 
 # standard
 [wood](wood___20250527_1447_59.pd)
 
 # related
-$1
+
 endsnippet
 
 snippet mc "inline code" A
@@ -1058,24 +1063,30 @@ ${1:${VISUAL}}
 ~~~
 endsnippet
 
-snippet trans "transclusion include file" b
+snippet tr "transclusion include file" b
 ~~~{.include}
 ${1:${VISUAL}}
 ~~~
 endsnippet
-
-
 ---
+
+@s markdown
+
+--- markdown.snippets
+extends pandoc
+---
+
 
 @s shell snippets
 
 --- shell.snippets
-snippet pream
+# this file is overwritten in the lit compile process
+snippet pr
 #!/usr/bin/sh
 
 endsnippet
 
-snippet fo "for lop" A
+snippet fo "for loop"
 for $1
 do
 	$2
@@ -1085,7 +1096,26 @@ endsnippet
 ---
 
 --- sh.snippets
+# this file is overwritten in the lit compile process
 extends shell
+---
+
+@s html
+--- html.snippets
+snippet ta "tag"
+<$1>$2</$1>
+endsnippet
+
+snippet im
+<img src="/assets/$1">
+endsnippet
+
+snippet code
+<pre><code data-trim data-noescape data-trim class="language-bash">
+$1
+</code></pre>
+endsnippet
+
 ---
 
 
