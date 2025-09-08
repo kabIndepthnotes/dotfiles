@@ -9,7 +9,7 @@ symlink-lf:
 
 symlink-scim:
 	# mkdir /home/kab/docs/dotfiles/sc-im
-	ln -s /home/kab/docs/dotfiles/scimrc /home/kab/.config/sci-im/scimrc
+	ln -s /home/kab/docs/dotfiles/scimrc /home/kab/.config/sc-im/scimrc
 
 symlink-qute-configpy:
 	ln -s ~/docs/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
@@ -17,11 +17,15 @@ symlink-qute-configpy:
 symlink-bashrc:
 	ln -s /home/kab/docs/dotfiles/dot-bashrc /home/kab/.bashrc
 
+symlink-newsboat:
+	ln -s /home/kab/docs/dotfiles/newsboatrc /home/kab/.newsboat/config
+
 lit-vim:
 	lit --tangle lits/vimrc.lit --out-dir vim/
 	lit --weave lits/vimrc.lit  --out-dir docs/
 	# lit --weave lits/vimrc.lit --md-compiler --out-dir docs/
 	mv vim/vimrc.vim vim/vimrc # annoying rule of lit
+	mv vim/syntax/csound_opcodes.vim vim/syntax/csound_opcodes # annoying rule of lit
 	sed -i 1d vim/myvimplugadd.sh # remove first line comment
 	sed -i 1d vim/myvimplugupdate.sh # remove first line comment
 
