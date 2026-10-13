@@ -1,38 +1,60 @@
-default:
-	echo "hello world"
+.PHONY: default install clean lit-vim lit-ultisnip
+default:install
+
+clean:rm-symlink-vim rm-symlink-lf rm-symlink-newsboat rm-symlink-zshrc # rm-symlink-taskrc
+
+install:symlink-vim symlink-lf symlink-newsboat symlink-zshrc # symlink-taskrc
+
+rm-symlink-vim:
+	rm $(HOME)/.config/vim
+
+rm-symlink-lf:
+	[ -L $(HOME)/.config/lf/lfrc ] && rm $(HOME)/.config/lf/lfrc || true
+
+rm-symlink-zshrc:
+	[ -L $(HOME)/.zshrc ] && rm $(HOME)/.zshrc || true
+
+rm-symlink-newsboat:
+	[ -L $(HOME)/.newsboat/config ] && rm $(HOME)/.newsboat/config || true
+
+rm-symlink-taskrc:
+	[ -L $(HOME)/.config/task/taskrc ] && rm $(HOME)/.config/task/taskrc || true
 
 symlink-vim:
-	ln -s /home/kab/docs/dotfiles/vim /home/kab/.config/vim
+	ln -sfn $(CURDIR)/vim $(HOME)/.config/vim
 
 symlink-lf:
-	ln -s /home/kab/docs/dotfiles/lfrc /home/kab/.config/lf/lfrc
+	ln -sfn $(CURDIR)/lfrc $(HOME)/.config/lf/lfrc
 
-symlink-scim:
-	# mkdir /home/kab/docs/dotfiles/sc-im
-	ln -s /home/kab/docs/dotfiles/scimrc /home/kab/.config/sc-im/scimrc
-
-symlink-qute-configpy:
-	ln -s ~/docs/dotfiles/qutebrowser/config.py ~/.config/qutebrowser/config.py
-
-symlink-bashrc:
-	ln -s /home/kab/docs/dotfiles/dot-bashrc /home/kab/.bashrc
+symlink-zshrc:
+	ln -sfn $(CURDIR)/dot-zshrc $(HOME)/.zshrc
 
 symlink-newsboat:
-	ln -s /home/kab/docs/dotfiles/newsboatrc /home/kab/.newsboat/config
+	ln -sfn $(CURDIR)/newsboatrc $(HOME)/.newsboat/config
 
-lit-vim:
+symlink-taskrc:
+	ln -sfn $(CURDIR)/dot-taskrc $(HOME)/.config/task/taskrc
+
+# symlink-scim:
+# 	# mkdir $(CURDIR)/sc-im
+# 	ln -sfn $(CURDIR)/scimrc $(HOME)/.config/sc-im/scimrc
+
+# symlink-qute-configpy:
+# 	ln -sfn ~/docs/qutebrowser/config.py ~/.config/qutebrowser/config.py
+
+# symlink-bashrc:
+# 	ln -sfn $(CURDIR)/dot-bashrc $(HOME)/.bashrc
+#
+
+lit-vim: lits/vimrc.lit
 	lit --tangle lits/vimrc.lit --out-dir vim/
 	lit --weave lits/vimrc.lit  --out-dir docs/
-	# lit --weave lits/vimrc.lit --md-compiler --out-dir docs/
 	mv vim/vimrc.vim vim/vimrc # annoying rule of lit
 	mv vim/syntax/csound_opcodes.vim vim/syntax/csound_opcodes # annoying rule of lit
-	sed -i 1d vim/myvimplugadd.sh # remove first line comment
-	sed -i 1d vim/myvimplugupdate.sh # remove first line comment
+	# sed -i 1d vim/myvimplugadd.sh # remove first line comment, just use noHeader
+	# sed -i 1d vim/myvimplugupdate.sh # remove first line comment, just use noHeader
 
-
-lit-ultisnip:
+lit-ultisnip: lits/ultisnips.lit
 	lit --tangle lits/ultisnips.lit --out-dir vim/UltiSnips/
 	lit --weave lits/ultisnips.lit --out-dir docs/
 
-symlink-taskrc:
-	ln -s /home/kab/docs/dotfiles/dot-taskrc /home/kab/.config/task/taskrc
