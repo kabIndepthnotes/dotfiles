@@ -24,12 +24,14 @@ symlink-vim:
 	ln -sfn $(CURDIR)/vim $(HOME)/.config/vim
 
 symlink-lf:
+	mkdir -p $(HOME)/.config/lf
 	ln -sfn $(CURDIR)/lfrc $(HOME)/.config/lf/lfrc
 
 symlink-zshrc:
 	ln -sfn $(CURDIR)/dot-zshrc $(HOME)/.zshrc
 
 symlink-newsboat:
+	mkdir -p $(HOME)/.newsboat
 	ln -sfn $(CURDIR)/newsboatrc $(HOME)/.newsboat/config
 
 symlink-taskrc:
