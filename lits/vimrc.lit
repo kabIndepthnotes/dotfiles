@@ -309,7 +309,7 @@ To initialise in you config folder add the folders `pack/USER/opt` and replace U
 
 To remove do `git rm $DEST`
 
---- myvimplugadd.sh
+--- myvimplugadd.sh --- noHeader
 #!/bin/bash
 #NAME is what git uses internally
 NAME=$1
@@ -321,7 +321,7 @@ git submodule add --name $NAME $URL $DEST
 vim -u NONE -c "helptags $DEST/doc" -c q
 ---
 
---- myvimplugupdate.sh
+--- myvimplugupdate.sh --- noHeader
 #!/bin/bash
 cd ${HOME}/docs/dotfiles/vim/pack/kab/opt/
 git submodule update --remote
