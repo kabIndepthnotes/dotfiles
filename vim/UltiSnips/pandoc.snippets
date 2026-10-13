@@ -3,14 +3,11 @@ priority -50
 extends mymathtex
 priority 1
 
-snippet pream "Preamble"
-# `!v system("/home/kab/docs/my_scripts/mydezetelify " . expand("%:t"))`
-
-# standard
-[wood](wood___20250527_1447_59.pd)
+snippet pr "Preamble"
+# `!v system("/home/kab/docs/my_scripts/my_dezetelify " . expand("%:t"))`
 
 # related
-$1
+
 endsnippet
 
 snippet mc "inline code" A
@@ -23,5 +20,8 @@ ${1:${VISUAL}}
 ~~~
 endsnippet
 
-
-
+snippet gm "display code" Ab
+~~~{.gd .numberLines}
+${1:${VISUAL}}
+~~~
+endsnippet

@@ -61,3 +61,22 @@ snippet mo "module"
 @{$1}
 endsnippet
 
+
+snippet godot "godot preamble"
+@code_type gdscript .gd
+@comment_type # %s
+
+@s Untitled video game: A point and click puzzle game showcasing my ability in pixel art and music
+
+
+--- `!p snip.rv = snip.basename`.gd
+extends Button
+# @{export_vars}
+# @{onready_vars}
+# @{vars}
+# @{consts}
+# @{builtins}
+# @{customs}
+---
+endsnippet
+

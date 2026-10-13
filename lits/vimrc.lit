@@ -447,6 +447,16 @@ call WincentLoad("neomake")
 call neomake#configure#automake('w')
 ---
 
+--- autocommands +=
+augroup literate
+  autocmd!
+  autocmd BufRead,BufNewFile *.lit setlocal foldmethod=expr
+        \ foldexpr=getline(v:lnum)=~'^@s\\>'?'>1':'='
+        \ foldlevel=0
+augroup END
+---
+
+
 @s ultisnips
 --- plugins +=
 call WincentLoad("ultisnips")
@@ -466,6 +476,19 @@ let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<Left>"
 ---
 
+--- set_calls +=
+set noexpandtab
+---
+
+--- autocommands +=
+augroup lit
+    au!
+    autocmd filetype literate setlocal commentstring=#\ %s
+augroup END
+---
+
+
+
 see ultisnips.lit for all snippets
 
 @s faster personal wiki
@@ -480,7 +503,7 @@ This will probably be best in a seperate plugin
 - use gemini as it is based on google (regulated and good for code review, has a good free tier)
 
 --- plugins +=
-call WincentLoad("denops-vim")
+" call WincentLoad("denops-vim")
 call WincentLoad("futago-vim")
 ---
 

@@ -26,7 +26,7 @@ call WincentLoad("vim-fugitive")
 call WincentLoad("literate-vim")
 call WincentLoad("neomake")
 call WincentLoad("ultisnips")
-call WincentLoad("denops-vim")
+" call WincentLoad("denops-vim")
 call WincentLoad("futago-vim")
 
 " functions
@@ -103,6 +103,7 @@ set incsearch
 nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gc <cmd>Git commit<cr>
 nnoremap <leader>gv <cmd>GV<cr>
+set noexpandtab
 
 " maps
 vnoremap <C-c> "+y
@@ -156,6 +157,16 @@ augroup wiki
 		autocmd FileType pandoc nnoremap <buffer> <c-f> :!my_linkify $(fzf) \| xsel -b<cr>
 	autocmd FileType pandoc setlocal commentstring=<!--\ %s\ -->
 
+augroup END
+augroup literate
+  autocmd!
+  autocmd BufRead,BufNewFile *.lit setlocal foldmethod=expr
+        \ foldexpr=getline(v:lnum)=~'^@s\\>'?'>1':'='
+        \ foldlevel=0
+augroup END
+augroup lit
+    au!
+    autocmd filetype literate setlocal commentstring=#\ %s
 augroup END
 
 " plug_settings
