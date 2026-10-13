@@ -47,14 +47,14 @@ symlink-taskrc:
 #
 
 lit-vim: lits/vimrc.lit
-	lit --tangle lits/vimrc.lit --out-dir vim/
-	lit --weave lits/vimrc.lit  --out-dir docs/
+	lit --tangle $< --out-dir vim/
+	lit --weave  $<  --out-dir docs/
 	mv vim/vimrc.vim vim/vimrc # annoying rule of lit
 	mv vim/syntax/csound_opcodes.vim vim/syntax/csound_opcodes # annoying rule of lit
 	# sed -i 1d vim/myvimplugadd.sh # remove first line comment, just use noHeader
 	# sed -i 1d vim/myvimplugupdate.sh # remove first line comment, just use noHeader
 
 lit-ultisnip: lits/ultisnips.lit
-	lit --tangle lits/ultisnips.lit --out-dir vim/UltiSnips/
-	lit --weave lits/ultisnips.lit --out-dir docs/
+	lit --tangle $< --out-dir vim/UltiSnips/
+	lit --weave  $< --out-dir docs/
 
