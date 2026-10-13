@@ -82,7 +82,7 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 # Load syntax highlighting; should be last.
-source $HOME/apps/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+# source $HOME/apps/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
 if [ -f /media/veracrypt1/.api ]; then
 	. /media/veracrypt1/.api
