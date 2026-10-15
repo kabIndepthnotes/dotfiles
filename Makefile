@@ -21,6 +21,8 @@ rm-symlink-taskrc:
 	[ -L $(HOME)/.config/task/taskrc ] && rm $(HOME)/.config/task/taskrc || true
 
 symlink-vim:
+	mkdir -p $(HOME)/.config/vim/undodir
+	mkdir -p $(HOME)/docs/vimtmp/
 	ln -sfn $(CURDIR)/vim $(HOME)/.config/vim
 
 symlink-lf:
