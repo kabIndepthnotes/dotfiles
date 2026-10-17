@@ -36,8 +36,8 @@ endfunction
 function! IndepthWikiEnterNormal() abort
 	let word = expand("<cword>")
 	" check_if_file_is_already_there
-	" let found_words = system('/home/kab/docs/my_scripts/mysearchzets ' . word)
-	" let found_words_choices = system('/home/kab/docs/my_scripts/mymakevimdialog ' . found_words)
+	" let found_words = system('mysearchzets ' . word)
+	" let found_words_choices = system('mymakevimdialog ' . found_words)
 	" let word_choice_input = confirm(found_words, "type number or leave blank:")
 	" 
 	" let no_of_possible_choices = system('echo ' . found_word_choices . ' | wc -l')
@@ -47,13 +47,20 @@ function! IndepthWikiEnterNormal() abort
 	" endif
 	
 
-	let zetname = system("/home/kab/docs/my_scripts/my_zetelify " . word)
+	let zetname = system("my_zetelify " . word)
 	execute "normal! ciw" . zetname . "\<Esc>"
 	normal h
 	write!
 endfunction
 function! IndepthWikiEnterVisual() abort
 	'<,'>s/\%V /_/g
+endfunction
+function! PandocFold()
+  let hashes = matchstr(getline(v:lnum), '^#\+\ze\s')
+  if !empty(hashes)
+    return '>' . len(hashes)
+  endif
+  return '='
 endfunction
 function! DefaultTab() abort
 	:Tabularize /\t
@@ -86,8 +93,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set backup writebackup
-set backupdir=/home/kab/docs/vimtmp//,.
-set directory=/home/kab/docs/vimtmp//,. " for swapfile
+set backupdir=~/docs/vimtmp//,.
+set directory=~/docs/vimtmp//,. " for swapfile
 
 set undodir=~/.config/vim/undodir
 set undofile
@@ -157,6 +164,11 @@ augroup wiki
 		autocmd FileType pandoc nnoremap <buffer> <c-f> :!my_linkify $(fzf) \| xsel -b<cr>
 	autocmd FileType pandoc setlocal commentstring=<!--\ %s\ -->
 
+augroup END
+augroup pandoc_folds
+  autocmd!
+  autocmd BufRead,BufNewFile *.pd setlocal foldmethod=expr
+        \ foldexpr=PandocFold() foldlevel=0
 augroup END
 augroup literate
   autocmd!
