@@ -114,6 +114,8 @@ alias ez='$EDITOR ~/.zshrc
 alias lg='\lazygit'
 alias xiv='\nsxiv'
 alias e='$EDITOR'
+alias en='sudoedit /etc/nixos/configuration.nix'
+alias rn='sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)'
 alias kc='eval $(keychain --eval ~/.ssh/indepth_id_ed25519)'
 
 export SUDO_ASKPASS=/usr/bin/ssh-askpass
