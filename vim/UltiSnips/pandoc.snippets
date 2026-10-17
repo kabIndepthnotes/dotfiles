@@ -1,10 +1,14 @@
 # pandoc.snippets
+# this file is overwritten in the lit compile process
 priority -50
 extends mymathtex
 priority 1
 
 snippet pr "Preamble"
-# `!v system("/home/kab/docs/my_scripts/my_dezetelify " . expand("%:t"))`
+# `!v system("my_dezetelify " . expand("%:t"))`
+
+# standard
+[wood](wood___20250527_1447_59.pd)
 
 # related
 
@@ -20,8 +24,9 @@ ${1:${VISUAL}}
 ~~~
 endsnippet
 
-snippet gm "display code" Ab
-~~~{.gd .numberLines}
+snippet tr "transclusion include file" b
+~~~{.include}
 ${1:${VISUAL}}
 ~~~
 endsnippet
+
