@@ -164,7 +164,7 @@ set backup writebackup
 set backupdir=~/docs/vimtmp//,.
 set directory=~/docs/vimtmp//,. " for swapfile
 
-set undodir=~/.config/vim/undodir
+set undodir=~/.local/state/vim/undo
 set undofile
 set undolevels=10000 " max no of changes possible to undo
 set undoreload=100000 " max no of lines to save for undo on a buffer reload

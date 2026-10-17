@@ -1044,7 +1044,7 @@ extends mymathtex
 priority 1
 
 snippet pr "Preamble"
-# `!v system("/home/kab/docs/my_scripts/my_dezetelify " . expand("%:t"))`
+# `!v system("my_dezetelify " . expand("%:t"))`
 
 # standard
 [wood](wood___20250527_1447_59.pd)
