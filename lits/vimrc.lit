@@ -161,8 +161,8 @@ highlight SpecialKey guifg=#888888
 @s backup and undo
 --- set_calls +=
 set backup writebackup
-set backupdir=~/docs/vimtmp//,.
-set directory=~/docs/vimtmp//,. " for swapfile
+set backupdir=~/b/docs/vimtmp//,.
+set directory=~/b/docs/vimtmp//,. " for swapfile
 
 set undodir=~/.local/state/vim/undo
 set undofile

@@ -103,12 +103,12 @@ export PATH
 # makes held keys debounce faster
 xset r rate 300 40
 
-alias cdgm='cd /media/kab/TAU/gamedev/games/quest_of_the_castle/'
-alias cdu='cd /media/kab/TAU/'
-alias cds='cd ${HOME}/docs/my_scripts/'
-alias cdw='cd ${HOME}/docs/indepthwiki/wiki/'
-alias cdj='cd /media/veracrypt1/journal/journal/'
-alias cdp='cd /media/$(whoami)/TAU/ai/pomo_bash/'
+alias cdgm='cd /run/media/kab/TAU/gamedev/games/quest_of_the_castle/'
+alias cdu='cd /run/media/kab/TAU/'
+alias cds='cd ${HOME}/b/docs/my_scripts/'
+alias cdw='cd ${HOME}/b/docs/indepthwiki/wiki/'
+alias cdj='cd /run/media/veracrypt1/journal/journal/'
+alias cdp='cd /run/media/$(whoami)/TAU/ai/pomo_bash/'
 alias ez='$EDITOR ~/.zshrc
 	source ~/.zshrc'
 alias lg='\lazygit'
@@ -135,7 +135,7 @@ if [ -e ~/Downloads ]; then
 fi
 
 [ -f "/home/kab/.ghcup/env" ] && . "/home/kab/.ghcup/env" # ghcup-env
-[ -f "/home/kab/.deno/env" ] && . "/home/kab/.deno/env"
+# [ -f "/home/kab/.deno/env" ] && . "/home/kab/.deno/env"
 
 export wiki="${HOME}/docs/indepthwiki/wiki"
 
